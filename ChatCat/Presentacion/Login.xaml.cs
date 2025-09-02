@@ -26,7 +26,7 @@ namespace ChatCat.Presentacion
             };
         }
 
-        private async void ButtonLogin(object sender, RoutedEventArgs e)
+        private async void ButtonLogin_Click(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtUsername.Text) || string.IsNullOrWhiteSpace(txtPassword.Password))
             {
@@ -69,7 +69,7 @@ namespace ChatCat.Presentacion
             await conexionCat.RequestUserLogin(username, password);
         }
 
-        private async void ButtonRegister(object sender, RoutedEventArgs e)
+        private async void ButtonRegister_Click(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtUsername.Text) || string.IsNullOrWhiteSpace(txtPassword.Password))
             {
@@ -109,7 +109,7 @@ namespace ChatCat.Presentacion
             await conexionCat.RequestUserCreation(username, password);
         }
 
-        private void connectServerButton_Click(object sender, RoutedEventArgs e)
+        private async void ConnectServerButton_Click(object sender, RoutedEventArgs e)
         {
             var server = txtServer.Text.Trim();
 
@@ -119,7 +119,10 @@ namespace ChatCat.Presentacion
                 return;
             }
 
-            conexionCat.ConnectAsync(server);
+            await conexionCat.ConnectAsync(server);
+
+            ConnectServerButton.IsEnabled = false;
+            txtServer.IsEnabled = false;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

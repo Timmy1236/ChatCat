@@ -7,7 +7,7 @@
         WindowStartupLocation="CenterScreen"
         mc:Ignorable="d"
         Loaded="Chat_Loaded"
-        Title="Chat" MinHeight="450" MinWidth="800" Height="450" Width="800">
+        Title="Chat" MinHeight="450" MinWidth="800" Height="550" Width="950">
     <Grid Background="#FF171717">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="150"/>
@@ -20,24 +20,12 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="1" Grid.Column="0">
-            <Button Margin="10,9,10,10" Content="Desconectar" Click="ButtonDesconectar" BorderBrush="#FF252525" Background="#FF252525" Foreground="White">
-                <Button.Resources>
-                    <Style TargetType="{x:Type Border}">
-                        <Setter Property="CornerRadius" Value="5"/>
-                    </Style>
-                </Button.Resources>
-            </Button>
+            <Button Margin="10,9,10,10" Content="Desconectar" Click="ButtonDesconectar" Style="{StaticResource DarkButtonStyle}"/>
         </Grid>
 
         <Grid Grid.Row="1" Grid.Column="1">
-            <TextBox x:Name="MessageInput" KeyDown="MessageInput_KeyDown" Margin="10,10,60,10" TextWrapping="Wrap" VerticalContentAlignment="Center" Background="#FF171717" Foreground="White" BorderBrush="#FF252525" BorderThickness="2"/>
-            <Button Click="SendMessage_Click" x:Name="SendMessage" Content=">" HorizontalAlignment="Right" VerticalAlignment="Center" Padding="10,5,10,5" Margin="10,10,10,10" ScrollViewer.CanContentScroll="True" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" BorderBrush="#FF252525" Foreground="White" Background="#FF252525">
-                <Button.Resources>
-                    <Style TargetType="{x:Type Border}">
-                        <Setter Property="CornerRadius" Value="5"/>
-                    </Style>
-                </Button.Resources>
-            </Button>
+            <TextBox x:Name="MessageInput" KeyDown="MessageInput_KeyDown" Margin="10,10,55,10" TextWrapping="Wrap" VerticalContentAlignment="Center" Background="#FF171717" Foreground="White" BorderBrush="#FF252525" BorderThickness="2"/>
+            <Button Click="SendMessage_Click" x:Name="SendMessage" Content=">" HorizontalAlignment="Right" VerticalAlignment="Center" Padding="10,5,10,5" Margin="10,10,10,10" ScrollViewer.CanContentScroll="True" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Style="{StaticResource DarkButtonStyle}"/>
         </Grid>
 
         <ListBox x:Name="listMessages" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,10,10,10" Grid.Column="1" HorizontalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Background="#FF171717" BorderBrush="#FF252525" BorderThickness="2">
