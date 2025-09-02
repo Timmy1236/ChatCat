@@ -1,11 +1,10 @@
 ﻿using ChatCat.Clases;
 using ChatCat.Datos;
 using ChatCat.Presentacion;
-using System;
 using System.Collections.ObjectModel;
 using System.Media;
 using System.Windows;
-using System.Windows.Controls;
+using System.Windows.Interop;
 
 namespace ChatCat
 {
@@ -50,6 +49,13 @@ namespace ChatCat
         private async void Chat_Loaded(object sender, RoutedEventArgs e)
         {
             await conexionCat.RequestUserListAsync();
+
+            base.OnSourceInitialized(e);
+
+            // Activamos el dark mode del titlebar
+            HwndSource source = (HwndSource)PresentationSource.FromVisual(this);
+            IntPtr handle = source.Handle;
+            DwmApi.UseImmersiveDarkMode(handle, true);
         }
 
         private async void SendMessage_Click(object sender, RoutedEventArgs e)

@@ -1,5 +1,6 @@
-﻿using System.Windows;
-using ChatCat.Datos;
+﻿using ChatCat.Datos;
+using System.Windows;
+using System.Windows.Interop;
 
 namespace ChatCat.Presentacion
 {
@@ -119,6 +120,16 @@ namespace ChatCat.Presentacion
             }
 
             conexionCat.ConnectAsync(server);
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            base.OnSourceInitialized(e);
+
+            // Activamos el dark mode del titlebar
+            HwndSource source = (HwndSource)PresentationSource.FromVisual(this);
+            IntPtr handle = source.Handle;
+            DwmApi.UseImmersiveDarkMode(handle, true);
         }
     }
 }
