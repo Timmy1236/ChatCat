@@ -12,8 +12,8 @@ namespace ChatCat.Datos
         public event Action<ChatMessage> OnMessageReceived;
         public event Action<User[]> OnUserListUpdated;
 
-        public event Action<bool> LoginResult;
-        public event Action<bool> RegisterResult;
+        public event Action<Result> LoginResult;
+        public event Action<Result> RegisterResult;
 
         // Conetarnos al servidor
         public async Task ConnectAsync(string url)
@@ -27,14 +27,14 @@ namespace ChatCat.Datos
 
             client.On("loginResult", response =>
             {
-                bool success = response.GetValue<bool>();
-                LoginResult?.Invoke(success);
+                var result = response.GetValue<Result>();
+                LoginResult?.Invoke(result);
             });
 
             client.On("registerResult", response =>
             {
-                bool success = response.GetValue<bool>();
-                RegisterResult?.Invoke(success);
+                var result = response.GetValue<Result>();
+                RegisterResult?.Invoke(result);
             });
 
             client.On("chatMessage", response =>
@@ -56,16 +56,6 @@ namespace ChatCat.Datos
                     OnMessageReceived?.Invoke(msg);
             });
 
-            client.On("userJoined", response =>
-            {
-                var msg = response.GetValue<User>();
-
-                string id = msg.id;
-                string username = msg.username;
-
-                //OnUserJoined?.Invoke($"{username}");
-            });
-
             client.On("userList", response =>
             {
                 var users = response.GetValue<User[]>();
@@ -80,7 +70,6 @@ namespace ChatCat.Datos
             await client.EmitAsync("login", username, password);
         }
 
-        // Enviar un mensaje al servidor
         public async Task SendMessageAsync(string message)
         {
             await client.EmitAsync("chatMessage", message);

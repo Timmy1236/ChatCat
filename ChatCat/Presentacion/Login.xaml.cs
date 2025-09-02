@@ -1,4 +1,5 @@
-﻿using ChatCat.Datos;
+﻿using ChatCat.Clases;
+using ChatCat.Datos;
 using System.Windows;
 using System.Windows.Interop;
 
@@ -43,14 +44,14 @@ namespace ChatCat.Presentacion
                 return;
             }
 
-            Action<bool> loginResultHandler = null;
+            Action<Result> loginResultHandler = null;
 
-            loginResultHandler = (success) =>
+            loginResultHandler = (result) =>
             {
                 Dispatcher.Invoke(() =>
                 {
                     conexionCat.LoginResult -= loginResultHandler;
-                    if (success)
+                    if (result.success)
                     {
                         var chatWindow = new Chat(conexionCat);
                         chatWindow.Show();
@@ -59,7 +60,7 @@ namespace ChatCat.Presentacion
                     }
                     else
                     {
-                        MessageBox.Show("Error de inicio de sesión", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        MessageBox.Show(result.reason.ToString(), "Error al ingresarse", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                 });
             };
@@ -86,20 +87,20 @@ namespace ChatCat.Presentacion
                 return;
             }
 
-            Action<bool> registerResultHandler = null;
+            Action<Result> registerResultHandler = null;
 
-            registerResultHandler = (success) =>
+            registerResultHandler = (result) =>
             {
                 Dispatcher.Invoke(() =>
                 {
                     conexionCat.RegisterResult -= registerResultHandler;
-                    if (success)
+                    if (result.success)
                     {
                         MessageBox.Show("Usuario registrado con éxito. Ahora puedes iniciar sesión.", "Registro Exitoso", MessageBoxButton.OK, MessageBoxImage.Information);
                     }
                     else
                     {
-                        MessageBox.Show("Error al registrar el usuario. Intenta con otro nombre.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        MessageBox.Show(result.reason.ToString(), "Error al registrarse", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                 });
             };
