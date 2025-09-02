@@ -13,7 +13,7 @@
             <ImageBrush ImageSource="/Assets/Images/background.png" Stretch="UniformToFill"></ImageBrush>
         </Grid.Background>
 
-        <Border Background="#1a1a1e" BorderBrush="Black" BorderThickness="1,1,1,1" CornerRadius="10,10,10,10" Margin="100,35,100,35" Padding="10,10,10,10">
+        <Border Background="#FF171717" BorderBrush="#FF252525" CornerRadius="10,10,10,10" Margin="100,35,100,35" Padding="10,10,10,10" BorderThickness="2">
             <Grid VerticalAlignment="Center">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="100*"/>
@@ -33,15 +33,15 @@
 
                 <Grid Grid.Row="1" Grid.Column="0">
                     <Label x:Name="lblUsername" Content="Nombre de usuario" VerticalContentAlignment="Top" HorizontalContentAlignment="Left" Margin="5,5,0,0" Foreground="White"/>
-                    <TextBox x:Name="txtUsername" TextWrapping="Wrap" VerticalContentAlignment="Center" Margin="10,30,10,10" Background="#FF2C2C37" BorderBrush="Black" Foreground="White"/>
+                    <TextBox x:Name="txtUsername" TextWrapping="Wrap" VerticalContentAlignment="Center" Margin="10,30,10,10" Background="#FF252525" BorderBrush="#FF252525" Foreground="White"/>
                 </Grid>
 
                 <Grid Grid.Row="2" Grid.Column="0">
-                    <Label x:Name="lblPassword" Content="Contraseña" VerticalContentAlignment="Top" HorizontalContentAlignment="Left" Margin="5,5,0,0" Foreground="White"/>
-                    <PasswordBox x:Name="txtPassword" VerticalContentAlignment="Center" Margin="10,30,10,10" Background="#FF2C2C37" BorderBrush="Black" Foreground="White"/>
+                    <Label x:Name="lblPassword" Content="Contraseña" VerticalContentAlignment="Top" HorizontalContentAlignment="Left" Margin="5,5,0,0" Foreground="White" BorderThickness="2"/>
+                    <PasswordBox x:Name="txtPassword" VerticalContentAlignment="Center" Margin="10,30,10,10" Background="#FF252525" BorderBrush="#FF252525" Foreground="White" BorderThickness="2"/>
                 </Grid>
 
-                <Button Grid.Row="3" Grid.Column="0" x:Name="loginButton" Content="Ingresar" Click="ButtonLogin" Margin="35,10,35,10" IsEnabled="False" Background="#FF21215A" BorderBrush="Black" Foreground="White" AutomationProperties.HelpText="Test">
+                <Button Grid.Row="3" Grid.Column="0" x:Name="loginButton" Content="Ingresar" Click="ButtonLogin" Margin="35,10,35,10" IsEnabled="False" Background="#FF252525" BorderBrush="#FF252525" Foreground="White" AutomationProperties.HelpText="Test" BorderThickness="2">
                     <Button.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="7"/>
@@ -49,7 +49,7 @@
                     </Button.Resources>
                 </Button>
 
-                <Button Grid.Row="4" Grid.Column="0" x:Name="registerButton" Content="Registrarse" Click="ButtonRegister" Margin="35,10,35,10" IsEnabled="False" Background="#FF2C2C37" BorderBrush="Black" Foreground="White">
+                <Button Grid.Row="4" Grid.Column="0" x:Name="registerButton" Content="Registrarse" Click="ButtonRegister" Margin="35,10,35,10" IsEnabled="False" Background="#FF252525" BorderBrush="#FF252525" Foreground="White" BorderThickness="2">
                     <Button.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="7"/>
@@ -61,10 +61,10 @@
 
                 <Grid Grid.Row="1" Grid.Column="2">
                     <Label x:Name="lblServer" Content="Server" VerticalContentAlignment="Top" HorizontalContentAlignment="Left" Margin="5,5,0,0" Foreground="White"/>
-                    <TextBox x:Name="txtServer" Text="http://localhost:11000" TextWrapping="Wrap" VerticalContentAlignment="Center" Margin="10,30,10,10" Background="#FF2C2C37" BorderBrush="Black" Foreground="White"/>
+                    <TextBox x:Name="txtServer" Text="http://localhost:11000" TextWrapping="Wrap" VerticalContentAlignment="Center" Margin="10,30,10,10" Background="#FF252525" BorderBrush="#FF252525" Foreground="White" BorderThickness="2"/>
                 </Grid>
 
-                <Button Grid.Row="3" Grid.Column="2" x:Name="connectServerButton" Content="Conectarse" Click="connectServerButton_Click" Margin="35,10,35,10" Background="#FF2C2C37" BorderBrush="Black" Foreground="White">
+                <Button Grid.Row="3" Grid.Column="2" x:Name="connectServerButton" Content="Conectarse" Click="connectServerButton_Click" Margin="35,10,35,10" Background="#FF252525" BorderBrush="#FF252525" Foreground="White" BorderThickness="2">
                     <Button.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="7"/>
